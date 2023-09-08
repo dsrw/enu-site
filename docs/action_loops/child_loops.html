@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js dark">
+<head>
+  <!-- Book generated using nimibook -->
+  <meta charset="UTF-8">
+  <title>Child Loops - Enu</title>
+
+  <!-- Custom HTML head -->
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="description" content="Build, together">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"/>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/general.css">
+  <link rel="stylesheet" href="../assets/css/chrome.css">
+  <link rel="stylesheet" href="../assets/css/enu.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet"
+      href="../assets/FontAwesome/css/font-awesome.min.css">
+
+  <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+  <link rel="stylesheet" href="../assets/css/highlight.css">
+  <link rel="stylesheet"
+      href="../assets/css/tomorrow-night.css">
+  <link rel="stylesheet"
+      href="../assets/css/ayu-highlight.css">
+
+  <!-- Custom theme stylesheets - why the "../"? -->
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+  <!-- plausible analytics (new in nimibook) -->
+</head>
+<body>
+<!-- Provide site root to javascript -->
+<script type="text/javascript">
+  var path_to_root = "..//assets";
+  var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "dark";
+</script>
+
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script type="text/javascript">
+  try {
+    var theme = localStorage.getItem('mdbook-theme');
+    var sidebar = localStorage.getItem('mdbook-sidebar');
+
+    if (theme.startsWith('"') && theme.endsWith('"')) {
+      localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+    }
+
+    if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+      localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+    }
+  } catch (e) {
+  }
+</script>
+
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script type="text/javascript">
+  var theme;
+  try {
+    theme = localStorage.getItem('mdbook-theme');
+  } catch (e) {
+  }
+  if (theme === null || theme === undefined) {
+    theme = default_theme;
+  }
+  var html = document.querySelector('html');
+  html.classList.remove('no-js')
+  html.classList.remove('dark')
+  html.classList.add(theme);
+  html.classList.add('js');
+</script>
+
+<!-- Hide / unhide sidebar before it is displayed -->
+<script type="text/javascript">
+  var html = document.querySelector('html');
+  var sidebar = 'hidden';
+  if (document.body.clientWidth >= 1080) {
+    try {
+      sidebar = localStorage.getItem('mdbook-sidebar');
+    } catch (e) {
+    }
+    sidebar = sidebar || 'visible';
+  }
+  html.classList.remove('sidebar-visible');
+  html.classList.add("sidebar-" + sidebar);
+</script>
+
+<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+  <div class="sidebar-scrollbox">
+    <ol class="chapter">
+      <li>
+        <a href="https://ē.nu">Home</a>
+      </li>
+    </ol>
+        <ol class="chapter">
+    <li class="chapter-item expanded ">
+      <a href="../intro.html" tabindex="0">
+        <strong aria-hidden="true">1.</strong> Introduction
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../intro/goals.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Goals
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/demos.html" tabindex="0">
+        <strong aria-hidden="true">1.2.</strong> Demos
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/building.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Install or Build
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../basics.html" tabindex="0">
+        <strong aria-hidden="true">2.</strong> Basics
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../basics/controls.html" tabindex="0">
+        <strong aria-hidden="true">2.1.</strong> Controls and Usage
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../basics/programming.html" tabindex="0">
+        <strong aria-hidden="true">2.2.</strong> Programming
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../basics/config.html" tabindex="0">
+        <strong aria-hidden="true">2.3.</strong> Config
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../coding.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Coding Enu
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../coding/concepts.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Concepts
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Commands
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/shorthand.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Shorthand Commands
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/random_numbers.html" tabindex="0">
+        <strong aria-hidden="true">3.4.</strong> Random Numbers
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops.html" tabindex="0">
+        <strong aria-hidden="true">4.</strong> Action Loops
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/actions.html" tabindex="0">
+        <strong aria-hidden="true">4.1.</strong> Actions
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">4.2.</strong> Loops
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">4.3.</strong> Arrows
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/child_loops.html" class="active" tabindex="0">
+        <strong aria-hidden="true">4.4.</strong> Child Loops
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">4.5.</strong> More About Action Loops
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../examples.html" tabindex="0">
+        <strong aria-hidden="true">5.</strong> Examples
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../example/shapes.html" tabindex="0">
+        <strong aria-hidden="true">5.1.</strong> Shapes
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../todo.html" tabindex="0">
+        <strong aria-hidden="true">6.</strong> TODO
+      </a></li>
+    </ol>
+<!-- I could use also an unescaped context value -->
+  </div>
+  <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+</nav>
+
+<div id="page-wrapper" class="page-wrapper">
+
+  <div class="page">
+    <div id="menu-bar-hover-placeholder"></div>
+    <div id="menu-bar" class="menu-bar sticky bordered">
+      <div class="left-buttons">
+        <button id="sidebar-toggle" class="icon-button" type="button"
+            title="Toggle Table of Contents"
+            aria-label="Toggle Table of Contents"
+            aria-controls="sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="theme-toggle" class="icon-button" type="button"
+            title="Change theme" aria-label="Change theme"
+            aria-haspopup="true" aria-expanded="false"
+            aria-controls="theme-list">
+          <i class="fa fa-paint-brush"></i>
+        </button>
+        <ul id="theme-list" class="theme-popup" aria-label="Themes"
+          role="menu">
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="dark">Dark</button>
+          </li>
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="light">Light</button>
+          </li>
+        </ul>
+      </div>
+
+      <h1 class="menu-title">Enu</h1>
+
+      <div class="right-buttons">
+          <a href="https://github.com/dsrw/enu" title="Git repository"
+             aria-label="Git repository">
+            <i id="git-repository-button"
+               class="fa fa-github"></i>
+          </a>
+
+      </div>
+    </div>
+
+
+    <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+    <script type="text/javascript">
+      document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+      document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+      Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+      });
+    </script>
+
+    <div id="content" class="content">
+      <main>
+          <h1>Child Loops</h1>
+<p>Actions are generally just a simple lists of commands. It's fine to put logic in them, but anything complicated
+will quickly get unwieldy. Imagine we have a unit that performs two complicated actions, <code>find_treasure</code> and
+<code>fight_monster</code>. <code>find_treasure</code> might need to <code>navigate</code> an area, <code>locate</code> items of interest, <code>interact</code> with them,
+then return to <code>home_base</code> to deposit them. <code>fight_monster</code> could require actions like <code>evade</code>, <code>attack</code>, <code>hide</code>, and
+<code>flee</code>.</p>
+<p>Combining all of this in a single action loop would give us a lot of actions, many of which are mostly unrelated,
+and managing our switches could get very complicated. However, making them entirely separate isn't ideal either, as
+there's probably some common functionality between them (die if our health gets too low, respawn if we get stuck). We
+also need to switch between the two actions.</p>
+<p>A good way to manage this is by making <code>find_treasure</code> and <code>fight_monster</code> child loops rather than regular actions.
+We can treat them like regular actions in our main <code>loop</code>, but when we switch to them they'll be able to perform
+more sophisticated logic than a normal action could. In addition, our main loop will continue to run along side
+the the child loop, so we can quickly switch out of the child loop with a big switch arrow <code>==&gt;</code> in response to
+certain conditions, without either loop needing to worry about higher level concerns.</p>
+<p>Our main loop could look something like this:</p>
+<pre><code class="language-nim">loop find_treasure:
+  # our treasure logic goes here. This loop doesn't have an exit condition.
+  if treasure_found:
+    # We found it. Start looking again. This will switch from any action apart
+    # from `look_for_chest`
+    others ==&gt; look_for_chest
+
+loop fight_monster:
+  # fight logic here. This loop should exit when the monster dies
+  if monster.dead:
+    any ==&gt; nil
+
+loop:
+  # We want our unit to find_treasure indefinately. `find_treasure` doesn't exit (switch to nil)
+  nil -&gt; find_treasure
+  if monster.near:
+    # find_treasure doesn't need to know anything about monsters. We can break out of it
+    # with a big switch arrow if we encounter one.
+    find_treasure ==&gt; fight_monster
+
+  # fight_monster does have an exit condition (the monster dies), so we can wait for it to finish
+  # using the little switch arrow, then go back to finding treasure.
+  fight_monster -&gt; find_treasure
+
+  if health == 0:
+    # if our health drops to 0, it doesn't matter what else we're doing. Die immediately. Break out
+    # of any action (except die) with a big switch arrow.
+    (any, -die) ==&gt; die
+
+    # this would also work:
+    # others ==&gt; die
+  if stuck:
+    # respawn if we're stuck, but only from our two child loops. We don't want to respawn if we're
+    # already respawning, or we're dead. Implementation of `respawn` not shown.
+    (find_treasure, fight_monster) ==&gt; respawn
+
+  # we're done respawning. Treasure time!
+  respawn -&gt; find_treasure
+</code></pre>
+<p>Child loops can also call other child loops, in which case both the parent and grandparent loops can use <code>==&gt;</code> to break
+out of the top level loop. There's no set limit to nesting depth.</p>
+      </main>
+
+      <nav class="nav-wrapper" aria-label="Page navigation">
+        <!-- Mobile navigation buttons -->
+          <a rel="prev" href="../action_loops/arrows.html"
+             class="mobile-nav-chapters previous"
+             title="Previous chapter" aria-label="Previous chapter"
+             aria-keyshortcuts="Left">
+            <i class="fa fa-angle-left"></i>
+          </a>
+
+          <a rel="next" href="../action_loops/more.html"
+             class="mobile-nav-chapters next" title="Next chapter"
+             aria-label="Next chapter" aria-keyshortcuts="Right">
+            <i class="fa fa-angle-right"></i>
+          </a>
+
+        <div style="clear: both"></div>
+      </nav>
+    </div>
+  </div>
+
+  <nav class="nav-wide-wrapper" aria-label="Page navigation">
+      <a rel="prev" href="../action_loops/arrows.html"
+         class="nav-chapters previous" title="Previous chapter"
+         aria-label="Previous chapter" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+      </a>
+
+      <a rel="next" href="../action_loops/more.html"
+         class="nav-chapters next" title="Next chapter"
+         aria-label="Next chapter" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+      </a>
+  </nav>
+
+</div>
+
+
+
+
+
+
+
+<script src="../assets/js/clipboard.min.js"
+    type="text/javascript" charset="utf-8"></script>
+<script src="../assets/js/book.js" type="text/javascript"
+    charset="utf-8"></script>
+
+<!-- Custom JS scripts -->
+
+
+</body>
+</html>

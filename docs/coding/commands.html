@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js dark">
+<head>
+  <!-- Book generated using nimibook -->
+  <meta charset="UTF-8">
+  <title>Commands - Enu</title>
+
+  <!-- Custom HTML head -->
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="description" content="Build, together">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"/>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/general.css">
+  <link rel="stylesheet" href="../assets/css/chrome.css">
+  <link rel="stylesheet" href="../assets/css/enu.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet"
+      href="../assets/FontAwesome/css/font-awesome.min.css">
+
+  <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+  <link rel="stylesheet" href="../assets/css/highlight.css">
+  <link rel="stylesheet"
+      href="../assets/css/tomorrow-night.css">
+  <link rel="stylesheet"
+      href="../assets/css/ayu-highlight.css">
+
+  <!-- Custom theme stylesheets - why the "../"? -->
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+  <!-- plausible analytics (new in nimibook) -->
+</head>
+<body>
+<!-- Provide site root to javascript -->
+<script type="text/javascript">
+  var path_to_root = "..//assets";
+  var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "dark";
+</script>
+
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script type="text/javascript">
+  try {
+    var theme = localStorage.getItem('mdbook-theme');
+    var sidebar = localStorage.getItem('mdbook-sidebar');
+
+    if (theme.startsWith('"') && theme.endsWith('"')) {
+      localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+    }
+
+    if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+      localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+    }
+  } catch (e) {
+  }
+</script>
+
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script type="text/javascript">
+  var theme;
+  try {
+    theme = localStorage.getItem('mdbook-theme');
+  } catch (e) {
+  }
+  if (theme === null || theme === undefined) {
+    theme = default_theme;
+  }
+  var html = document.querySelector('html');
+  html.classList.remove('no-js')
+  html.classList.remove('dark')
+  html.classList.add(theme);
+  html.classList.add('js');
+</script>
+
+<!-- Hide / unhide sidebar before it is displayed -->
+<script type="text/javascript">
+  var html = document.querySelector('html');
+  var sidebar = 'hidden';
+  if (document.body.clientWidth >= 1080) {
+    try {
+      sidebar = localStorage.getItem('mdbook-sidebar');
+    } catch (e) {
+    }
+    sidebar = sidebar || 'visible';
+  }
+  html.classList.remove('sidebar-visible');
+  html.classList.add("sidebar-" + sidebar);
+</script>
+
+<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+  <div class="sidebar-scrollbox">
+    <ol class="chapter">
+      <li>
+        <a href="https://ē.nu">Home</a>
+      </li>
+    </ol>
+        <ol class="chapter">
+    <li class="chapter-item expanded ">
+      <a href="../intro.html" tabindex="0">
+        <strong aria-hidden="true">1.</strong> Introduction
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../intro/goals.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Goals
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/demos.html" tabindex="0">
+        <strong aria-hidden="true">1.2.</strong> Demos
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/building.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Install or Build
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../basics.html" tabindex="0">
+        <strong aria-hidden="true">2.</strong> Basics
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../basics/controls.html" tabindex="0">
+        <strong aria-hidden="true">2.1.</strong> Controls and Usage
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../basics/programming.html" tabindex="0">
+        <strong aria-hidden="true">2.2.</strong> Programming
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../basics/config.html" tabindex="0">
+        <strong aria-hidden="true">2.3.</strong> Config
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../coding.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Coding Enu
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../coding/concepts.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Concepts
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/commands.html" class="active" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Commands
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/shorthand.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Shorthand Commands
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../coding/random_numbers.html" tabindex="0">
+        <strong aria-hidden="true">3.4.</strong> Random Numbers
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops.html" tabindex="0">
+        <strong aria-hidden="true">4.</strong> Action Loops
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/actions.html" tabindex="0">
+        <strong aria-hidden="true">4.1.</strong> Actions
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">4.2.</strong> Loops
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">4.3.</strong> Arrows
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/child_loops.html" tabindex="0">
+        <strong aria-hidden="true">4.4.</strong> Child Loops
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../action_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">4.5.</strong> More About Action Loops
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../examples.html" tabindex="0">
+        <strong aria-hidden="true">5.</strong> Examples
+      </a></li>
+      <li>
+      <ol class="section">
+    <li class="chapter-item expanded ">
+      <a href="../example/shapes.html" tabindex="0">
+        <strong aria-hidden="true">5.1.</strong> Shapes
+      </a></li>
+      </ol>
+      </li>
+    <li class="chapter-item expanded ">
+      <a href="../todo.html" tabindex="0">
+        <strong aria-hidden="true">6.</strong> TODO
+      </a></li>
+    </ol>
+<!-- I could use also an unescaped context value -->
+  </div>
+  <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+</nav>
+
+<div id="page-wrapper" class="page-wrapper">
+
+  <div class="page">
+    <div id="menu-bar-hover-placeholder"></div>
+    <div id="menu-bar" class="menu-bar sticky bordered">
+      <div class="left-buttons">
+        <button id="sidebar-toggle" class="icon-button" type="button"
+            title="Toggle Table of Contents"
+            aria-label="Toggle Table of Contents"
+            aria-controls="sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="theme-toggle" class="icon-button" type="button"
+            title="Change theme" aria-label="Change theme"
+            aria-haspopup="true" aria-expanded="false"
+            aria-controls="theme-list">
+          <i class="fa fa-paint-brush"></i>
+        </button>
+        <ul id="theme-list" class="theme-popup" aria-label="Themes"
+          role="menu">
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="dark">Dark</button>
+          </li>
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="light">Light</button>
+          </li>
+        </ul>
+      </div>
+
+      <h1 class="menu-title">Enu</h1>
+
+      <div class="right-buttons">
+          <a href="https://github.com/dsrw/enu" title="Git repository"
+             aria-label="Git repository">
+            <i id="git-repository-button"
+               class="fa fa-github"></i>
+          </a>
+
+      </div>
+    </div>
+
+
+    <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+    <script type="text/javascript">
+      document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+      document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+      Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+      });
+    </script>
+
+    <div id="content" class="content">
+      <main>
+          <h1>Commands</h1>
+<h2><code>move</code> / <code>build</code></h2>
+<p>When dealing with a <code>Build</code> unit, commands can do different things depending on whether the unit is in <code>build</code>
+mode or <code>move</code> mode. <code>move</code> mode moves the unit around, while <code>build</code> creates new blocks. By default a <code>Build</code> is in
+<code>build</code> mode. Often you'll pass the <code>me</code> unit to <code>move/build</code>, but it's also possible to pass other units. For example:</p>
+<pre><code class="language-nim">build me # generally not required, as it's the default
+
+# make a shape:
+back 5
+right 3
+
+# move it into position:
+move me
+up 3
+
+# create another unit and add some blocks
+var enemy = ghost.new
+build enemy
+down 5
+
+# move it into position
+move enemy
+up 5
+</code></pre>
+<p>It's also possible to call commands directly against a unit instance, but they will always use <code>move</code> mode, regardless
+of which mode is in use:</p>
+<pre><code class="language-nim">build enemy
+up 5 # build 5 blocks up
+enemy.up 5 # move up 5
+</code></pre>
+<h2><code>forward</code> / <code>back</code> / <code>up</code> / <code>down</code> / <code>left</code> / <code>right</code></h2>
+<p>Move or build x number of blocks in the specified direction. Defaults to 1 block.</p>
+<pre><code class="language-nim">forward 5
+enemy.up 2
+</code></pre>
+<h2><code>turn</code></h2>
+<p>Turn a unit. Can be passed:</p>
+<ul>
+<li>a number in degrees. Positive for clockwise, negative for counter-clockwise. Ex. <code>turn 180</code></li>
+<li>a direction (<code>forward/back/up/down/left/right</code>) which will turn in that direction. 90 degrees by default.
+Ex. <code>turn left</code>, or <code>turn up, 180</code></li>
+<li>a unit to turn towards. Ex. <code>turn player</code></li>
+<li>a negative unit to turn away from. Ex. <code>turn -player</code></li>
+</ul>
+<h2><code>near(less_than = 5.0)</code> / <code>far(greater_than = 100.0)</code></h2>
+<p>Returns true or false if a unit is nearer/farther than the specified distance. For example:</p>
+<pre><code class="language-nim">if player.near:
+  echo &quot;the player is 5m or closer&quot;
+
+if player.far:
+  echo &quot;the player is 100m or farther&quot;
+
+if player.near(10):
+  echo &quot;the player is 10m or closer&quot;
+
+if player.far(25):
+  echo &quot;the player is 25m or farther&quot;
+</code></pre>
+<h2><code>hit</code></h2>
+<p>If a unit is touching another unit, return the vector of the contact. Defaults to testing against <code>me</code>. For example:</p>
+<pre><code class="language-nim">if player.hit:
+  echo &quot;I'm touching the player&quot;
+
+if player.hit == UP:
+  echo &quot;The player is on top of me&quot;
+
+if player.hit(enemy1):
+  echo &quot;The player hit enemy1&quot;
+</code></pre>
+<h2><code>position</code> / <code>postion=</code></h2>
+<p>Gets or set the position of a unit as a Vector3. <code>me</code> by default.</p>
+<pre><code class="language-nim">if player.hit(enemy):
+  # if the player hits `enemy`, reset the player position to the center of the world.
+  player.position = vec3(0, 0, 0)
+</code></pre>
+<h2><code>start_position</code></h2>
+<p>The starting position of a unit. Missing currently, but will be in in 0.2.</p>
+<h2><code>speed</code> / <code>speed=</code></h2>
+<p>Gets or sets the speed of a unit. <code>me</code> by default.</p>
+<p>While building, speed refers to the number of blocks placed per frame. In the future this will be normalized to 60fps,
+but currently the speed is tied to the framerate. Setting speed to 0 will build everything at once.</p>
+<p>While moving, this is the movement speed in meters per second.</p>
+<p>Switching between build and move mode doesn't impact the speed, except in the case of switching to move mode from build
+mode with a speed of 0. <code>speed = 0</code> is extremely common for build mode, but makes things appear broken in move mode,
+as nothing will actually move, so switching to move mode with a speed of 0 will automatically reset the speed to 1.</p>
+<h2><code>scale</code> / <code>scale=</code></h2>
+<p>Sets the scale/size of a unit. <code>me</code> by default.</p>
+<h2><code>glow</code> / <code>glow=</code></h2>
+<p>Specifies the glow/brightness of a unit. <code>me</code> by default. Currently does nothing for bots, but will in the future.</p>
+<h2><code>global</code> / <code>global=</code></h2>
+<p>Specifies if a unit is in global space, or the space of its parent. If <code>global = true</code> and the parent unit moves,
+child units are unaffected. If <code>global = false</code>, the child will move with its parent. Does nothing for top level units,
+as they're always global.</p>
+<p>By default, new <code>Build</code> units are <code>global = false</code> and new <code>Bot</code> units are <code>global = true</code>.</p>
+<h2><code>rotation</code></h2>
+<p>Gets the rotation of a unit as a Vector3.</p>
+<h2><code>velocity</code> / <code>velocity=</code></h2>
+<p>Gets or sets the velocity of a unit, as a Vector3. Currently buggy.</p>
+<h2><code>color</code> / <code>color=</code></h2>
+<p>Gets or sets a units color. <code>me</code> by default. For <code>Build</code> units, this only impacts blocks placed after the property
+is set. For <code>Bot</code> units this does nothing, but in the future it will change their color.</p>
+<h2><code>bounce</code></h2>
+<p>Bounces a unit in the air. Currently only works for the player.</p>
+<h2><code>save</code> / <code>restore</code></h2>
+<p><code>Build</code> units only. <code>save</code> the position, direction, drawing state, and color of the draw point, to <code>restore</code> it later.
+Can optionally take a name string to enable saving/restoring multiple points.</p>
+<h2><code>reset</code></h2>
+<p>Instantly return unit to start position and resets rotation and scale.</p>
+<h2><code>home</code></h2>
+<p>Moves a unit to its start position via a <code>forward</code>, <code>left</code>, <code>down</code> sequence with appropriate values. Can fail if there
+are obstructions along the way. Compare <code>position</code> to <code>start_position</code> after running to test for success.</p>
+<h2><code>sleep(seconds = -1.0)</code></h2>
+<p>Do nothing for the specified number of seconds. If no argument is provided, or the argument is &lt; 0, this will wait for
+0.5 seconds or until unit is interrupted, which will end the <code>sleep</code> prematurely. This allows the following:</p>
+<pre><code class="language-nim">forever:
+  sleep()
+  if player.hit:
+    echo &quot;ouch!&quot;
+</code></pre>
+<p>Currently, any collision will trigger an interrupt. This will be expanded in the future.</p>
+<h2><code>forever</code></h2>
+<p>Alias for <code>while true</code></p>
+<h2><code>cycle</code></h2>
+<p>Alternate between a list of values, returning the next element each time the cycle is called.</p>
+<pre><code class="language-nim">forever:
+  sleep 1
+  echo cycle(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)
+</code></pre>
+      </main>
+
+      <nav class="nav-wrapper" aria-label="Page navigation">
+        <!-- Mobile navigation buttons -->
+          <a rel="prev" href="../coding/concepts.html"
+             class="mobile-nav-chapters previous"
+             title="Previous chapter" aria-label="Previous chapter"
+             aria-keyshortcuts="Left">
+            <i class="fa fa-angle-left"></i>
+          </a>
+
+          <a rel="next" href="../coding/shorthand.html"
+             class="mobile-nav-chapters next" title="Next chapter"
+             aria-label="Next chapter" aria-keyshortcuts="Right">
+            <i class="fa fa-angle-right"></i>
+          </a>
+
+        <div style="clear: both"></div>
+      </nav>
+    </div>
+  </div>
+
+  <nav class="nav-wide-wrapper" aria-label="Page navigation">
+      <a rel="prev" href="../coding/concepts.html"
+         class="nav-chapters previous" title="Previous chapter"
+         aria-label="Previous chapter" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+      </a>
+
+      <a rel="next" href="../coding/shorthand.html"
+         class="nav-chapters next" title="Next chapter"
+         aria-label="Next chapter" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+      </a>
+  </nav>
+
+</div>
+
+
+
+
+
+
+
+<script src="../assets/js/clipboard.min.js"
+    type="text/javascript" charset="utf-8"></script>
+<script src="../assets/js/book.js" type="text/javascript"
+    charset="utf-8"></script>
+
+<!-- Custom JS scripts -->
+
+
+</body>
+</html>
