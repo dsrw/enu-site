@@ -297,8 +297,8 @@ won't happen until the current command actually completes.</p>
 <p><code>others -&gt; some_command</code> - Same as <code>any</code>, but it excludes the target command.</p>
 </li>
 <li>
-<p><code>(command1, command2)</code> - Multiple from cmmands can be supported by putting
-them in a tuple.</p>
+<p><code>(command1, command2)</code> - Switch from multiple commands by listing them in a
+tuple.</p>
 </li>
 <li>
 <p><code>(any, -command2, -command3)</code> - Switch from any command except <code>command2</code> and
@@ -308,8 +308,9 @@ them in a tuple.</p>
 <h3>When do command loops run?</h3>
 <p>A command loops will run whenever the current command finishes. In addition,
 command loops will run every 0.5 seconds, and when something &quot;interesting&quot;
-happens. Currently only the start and end of a collision with the player
-will cause the loop to be run immediately, but this will be expanded.</p>
+happens. Currently only the start and end of a collision with the player is
+&quot;interesting&quot; and will cause the loop to be run immediately, but this will be
+expanded.</p>
 <p>When using child loops, the top level loop runs first, then walks down the stack
 of loops until the current loop is reached.</p>
       </main>
