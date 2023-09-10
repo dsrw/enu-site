@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Examples - Enu</title>
+  <title>Command Loops - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="./intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="./intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="./intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="./intro/multiplayer.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="./intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="./command_loops.html" class="active" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="./action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="./command_loops/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="./command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="./command_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/child_loops.html" tabindex="0">
+      <a href="./command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/more.html" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="./examples.html" class="active" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="./example/shapes.html" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="./command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="./goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -261,73 +257,42 @@
 
     <div id="content" class="content">
       <main>
-          <h1>Examples</h1>
-<p><em>TODO: Include examples of new 0.2 functionality</em></p>
-<p>Draw a square:</p>
-<pre><code class="language-nim">forward 10
-right 10
-back 10
-left 10
-</code></pre>
-<p>or:</p>
-<pre><code class="language-nim">4.times:
-  forward 10
-  turn_right()
-</code></pre>
-<p><img src="assets/square_example.png" alt="Square Example" />Create a twisting tower:</p>
-<pre><code class="language-nim">var
-  length = 20
-  height = 50
+          <h1>Command Loops</h1>
+<p>Command loops are how you control the behavior of units. They look like this:</p>
+<pre><code class="language-nim">- boogie:
+  position = position.fuzzed(0.5)
 
-height.times:
-  left length / 2
-  back length / 2
-  4.times:
-    forward length
-    turn right
-  forward length / 2
-  right length / 2
-  turn 5
-  up 1
+- shake:
+  left 1
+  right 1
+
+- rest:
+  sleep 5
+
+loop:
+  nil -&gt; shake
+  
+  if player.near:
+    shake -&gt; boogie
+    
+  elif player.far(50):
+    (rest, boogie) -&gt; shake
+    
+  elif player.far(200):
+    (boogie, shake) -&gt; rest
 </code></pre>
-<p><img src="assets/tower_example.png" alt="Tower Example" /></p>
-<p>Draw randomly:</p>
-<pre><code class="language-nim">up 10
-forward 10
-(50..100).times:
-  forward 2..5
-  turn -180..180
-  up 0..2
-</code></pre>
-<p><img src="assets/random_example.png" alt="Random Example" /></p>
-<p>Set the color to blue randomly with a 1 in 50 chance. Otherwise set it to white:</p>
-<pre><code class="language-nim">if 1 in 50:
-  color = blue
-else:
-  color = white
-</code></pre>
-<p>or as a one-liner:</p>
-<pre><code class="language-nim">color = if 1 in 50: blue else: white
-</code></pre>
-<p><img src="assets/random_color_example.png" alt="Random Color Example" /></p>
-<p>Move forward 10 times, cycling through colors:</p>
-<pre><code class="language-nim">10.times:
-  color = cycle(red, black, blue)
-  forward 1
-</code></pre>
-<p><img src="assets/cycle_example.png" alt="Color Cycle Example" /></p>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="./action_loops/more.html"
+          <a rel="prev" href="./coding/random_numbers.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="./example/shapes.html"
+          <a rel="next" href="./command_loops/commands.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -339,13 +304,13 @@ else:
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="./action_loops/more.html"
+      <a rel="prev" href="./coding/random_numbers.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="./example/shapes.html"
+      <a rel="next" href="./command_loops/commands.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>

@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>More About Action Loops - Enu</title>
+  <title>Writing Commands - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="../intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="../intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="../intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="../intro/multiplayer.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="../command_loops.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="../command_loops/commands.html" class="active" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="../command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="../command_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/child_loops.html" tabindex="0">
+      <a href="../command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/more.html" class="active" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="../examples.html" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="../example/shapes.html" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="../command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="../goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -261,56 +257,50 @@
 
     <div id="content" class="content">
       <main>
-          <h1>More about Action Loops</h1>
-<h3><code>as</code></h3>
-<p>Actions are just procedures, and they can take parameters. Sometimes you want to run the same action
-in different situations with a different action name. You could do this by creating a new action that
-calls the first one, but you can also use <code>as</code> to give an action a different name.</p>
-<pre><code class="language-nim"># explore action and health var not shown.
-- flee(distance = 100):
-  turn -player
-  forward distance
+          <h1>Writing Commands</h1>
+<p>A command is a piece of code that can be run to control a unit or to get
+information about the world. Enu has many built in commands like <code>forward</code>,
+<code>back</code>, <code>left</code>, and <code>right</code>, and it's easy to add your own.</p>
+<p>Commands start on a new line with a <code>-</code> and a space, followed by a name. If the
+command needs additional details to do its job you can list them in brackets
+separated by commas. Commands are blocks, so the first line ends with <code>:</code> and
+the command body is nested inside.</p>
+<pre><code class="language-nim">- hello(name):
+  echo &quot;hello &quot;, name
 
-loop:
-  nil -&gt; explore
-  if player.near and health &gt; 2:
-    explore -&gt; flee
-  elif player.near and health &lt;= 2:
-    explore ==&gt; flee(200) as really_flee
-  if player.far:
-    flee -&gt; explore
-  if player.far(150):
-    really_flee -&gt; explore
+- goodbye(name = &quot;Vin&quot;):
+  echo &quot;goodbye &quot;, name
+
+hello &quot;Claire&quot;
+goodbye &quot;Cal&quot;
 </code></pre>
-<h3>Special from actions</h3>
-<p>Often loops will switch from a single action to another. However, sometimes you want to allow switching from
-a variety of actions.</p>
-<ul>
-<li><code>any -&gt; some_action</code> - switch from any action to the target action. This will switch (and run any change action)
-even if we're already running the target action. In this example we used a little switch arrow, so it still won't
-happen until the current action actually completes.</li>
-<li><code>others -&gt; some_action</code> - Same as <code>any</code>, but it excludes the target action.</li>
-<li><code>(action1, action2)</code> - Multiple from actions can be supported by putting them in a tuple.</li>
-<li><code>(any, -action2, -action3)</code> - Switch from any action except <code>action2</code> and <code>action3</code>.</li>
-</ul>
-<h3>When do action loops run?</h3>
-<p>An action loops will run whenever its executing action finishes. In addition, action loops will run
-every 0.5 seconds, and when something triggers an interrupt. Currently only the start and end of a collision with the
-player trigger an interrupt, but this will be expanded.</p>
-<p>When using child loops, the top level loop runs first, then walks down the stack of loops until the currently executing
-loop is reached.</p>
+<p>If a command produces a result its type must appear before the <code>:</code>. In the
+future this will be handled automatically.</p>
+<pre><code class="language-nim">- hello(name) string:
+  result = &quot;hello &quot; &amp; $name
+
+echo hello(&quot;Scott&quot;)
+</code></pre>
+<details class="note">
+<summary>Note for Nimions</summary>
+<p>A command is just a <code>proc</code>. Anything that can be done with commands can also be
+done with normal procs.</p>
+<p>Command parameters (called details here) will default to <code>auto</code> if no type is
+provided. Each parameter is shadowed my a mutable variable inside the command
+body.</p>
+</details>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../action_loops/child_loops.html"
+          <a rel="prev" href="../command_loops.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../examples.html"
+          <a rel="next" href="../command_loops/arrows.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -322,13 +312,13 @@ loop is reached.</p>
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../action_loops/child_loops.html"
+      <a rel="prev" href="../command_loops.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../examples.html"
+      <a rel="next" href="../command_loops/arrows.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>

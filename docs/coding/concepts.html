@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="../intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="../intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="../intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="../intro/multiplayer.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="../command_loops.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="../command_loops/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="../command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="../command_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/child_loops.html" tabindex="0">
+      <a href="../command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/more.html" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="../examples.html" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="../example/shapes.html" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="../command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="../goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -263,33 +259,44 @@
       <main>
           <h1>Core Concepts</h1>
 <h2>Units</h2>
-<p>Entities/objects in Enu are referred to as units, and have a base type of <code>Unit</code>. Currently there are <code>Build</code> units
-(voxel objects) and <code>Bot</code> units (the robot). There will be more in the future.</p>
-<p><code>me</code> is the unit that owns a script, and is equivalent to <code>self</code>/<code>this</code> in other environments. <code>me</code> was selected
-because it's easier for a child to type. <code>me.</code> can be auto-inserted when accessing properties of the unit. For example,
-<code>me.speed = 10</code> would commonly be written as <code>speed = 10</code>. There are probably bugs with this behavior.  Please report
-them.</p>
+<p>Entities/objects in Enu are referred to as units, and have a base type of
+<code>Unit</code>. Currently there are <code>Build</code> units (voxel objects) and <code>Bot</code> units (the
+robot). There will be more in the future.</p>
+<p><code>me</code> is the unit that owns a script, and is equivalent to <code>self</code>/<code>this</code> in other
+environments. <code>me</code> was selected because it's easier for a child to type. <code>me.</code>
+can be auto-inserted when accessing properties of the unit. For example,
+<code>me.speed = 10</code> would commonly be written as <code>speed = 10</code>. There are probably
+bugs with this behavior.  Please report them.</p>
 <h2>Prototypes</h2>
-<p>Enu uses a prototype based object system for units. To allow a unit to be a prototype, you give it a name:</p>
+<p>Enu uses a prototype based object system for units. To allow a unit to be a
+prototype, you give it a name:</p>
 <pre><code class="language-nim">name ghost
 </code></pre>
 <p>Then create a new instance in a different script with <code>.new</code>:</p>
 <pre><code class="language-nim">var ghost2 = ghost.new
 </code></pre>
-<p>You can also provide parameters, which can be overridden when creating a new instance:</p>
+<p>You can also provide parameters, which can be overridden when creating a new
+instance:</p>
 <pre><code class="language-nim">name ghost(color = white, speed = 5, spookiness = 10)
 </code></pre>
-<p>These become properties of the unit (ie <code>me.spookiness = 5</code>), but can be treated like variables in the unit's script
-due to auto <code>me</code> insertion (<code>spookiness = 200</code>).</p>
+<p>These become properties of the unit (ie <code>me.spookiness = 5</code>), but can be treated
+like variables in the unit's script due to auto <code>me</code> insertion
+(<code>spookiness = 200</code>).</p>
 <p>To create a new instance with specific property values:</p>
 <pre><code class="language-nim">var ghost2 = ghost.new(spookiness = 11)
 </code></pre>
-<p>Parameters can have a default value (<code>spookiness = 10</code>), which makes them optional when creating a new instance. If they
-should be required, or there's no reasonable default value to use, specify a type (<code>spookiness: int</code>) instead, or omit
-both the value and the type, which will make the type <code>auto</code>. Because <code>auto</code> can be implicit, <code>name ghost(a, b: int)</code>
-treats parameters differently than <code>proc ghost(a, b: int)</code> would. With the proc, <code>a</code> and <code>b</code> are both <code>int</code>, whereas
-the <code>name</code> version would make <code>a</code> <code>auto</code> and <code>b</code> <code>int</code>.</p>
-<p><code>speed</code>, <code>color</code>, <code>global</code> can always be passed to a new instance, even if the prototype name doesn't include them.</p>
+<p>Parameters can have a default value (<code>spookiness = 10</code>), which makes them
+optional when creating a new instance. If they should be required, or there's no
+reasonable default value to use, specify a type (<code>spookiness: int</code>) instead, or
+omit both the value and the type, which will make the type <code>auto</code>.</p>
+<details class="note">
+<summary>Note for Nimions</summary>
+<p>Because <code>auto</code> can be implicit, <code>name ghost(a, b: int)</code> treats parameters
+differently than <code>proc ghost(a, b: int)</code> would. With the proc, <code>a</code> and <code>b</code> are
+both <code>int</code>, whereas the <code>name</code> version would make <code>a</code> <code>auto</code> and <code>b</code> <code>int</code>.</p>
+</details>
+<p><code>speed</code>, <code>color</code>, and <code>global</code> can always be passed to a new instance, even if
+the prototype name doesn't include them.</p>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">

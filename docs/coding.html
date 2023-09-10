@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="./intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="./intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="./intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="./intro/multiplayer.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="./intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="./command_loops.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="./action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="./command_loops/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="./command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="./command_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/child_loops.html" tabindex="0">
+      <a href="./command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="./action_loops/more.html" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="./examples.html" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="./example/shapes.html" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="./command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="./goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="./todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -265,6 +261,12 @@
 <p>Enu is programmed with a language called <a href="https://nim-lang.org">Nim</a>. This
 tutorial covers some of the basics of Nim, as well as a few special features
 that are unique to Enu.</p>
+<details class="note">
+<summary>Note for Nimions</summary>
+<p>Enu simplifies some Nim concepts, mainly to defer explaining unfamiliar terms.
+In particular, Enu tries to be forgiving with types, calls procs 'commands',
+and avoids immutable variables.</p>
+</details>
 <h2>Comments</h2>
 <p>Comments are a way to leave notes to yourself or other programmers. They can be
 used for lots of different things, but generally provide more information on how
@@ -273,7 +275,8 @@ general information, such as the author of the code and when it was written.
 They start with a <code>#</code> sign. Everything else on the line is ignored.</p>
 <pre><code class="language-nim"># Copyright Scott Wadden, 2023
 
-var last_row = false # we only want to change colors on the last row
+# we only want to change colors on the last row
+var last_row = false
 </code></pre>
 <h2>Types</h2>
 <p>Every piece of data in Enu has a type. These are the most common:</p>
@@ -324,12 +327,13 @@ if birthday:
 specify their type as well. This could be because you're not ready to give it a
 value, or because you want it to contain more than one kind of <code>Unit</code>.</p>
 <p>For example:</p>
-<pre><code class="language-nim"># this won't work because `enemy` gets automatically set to the type of 
-# `Player`, so other units won't work:
+<pre><code class="language-nim"># this won't work because `enemy` gets automatically set 
+# to the type of `Player`, so other units won't work:
 var enemy = player
 enemy = me
 
-# it will work if we do it like this, since `player` and `me` are both `Unit`
+# it will work if we do it like this, since `player` and
+# `me` are both `Unit`
 var enemy: Unit
 enemy = player
 enemy = me
@@ -403,11 +407,12 @@ back 20
 # this only happens once, since it isn't in a `times` block.
 
 8.times(side):
-  # It's also possible to see how many times we've already performed 
-  # the action by passing `times` an index variable.
-  # This starts from 0. in this example we're storing the counter in 
-  # a variable called `side`. Because we're doing this 8 times, 
-  # `side` will be set first to 0, then 1, 2, 3, 4, 5, 6, 7.
+  # It's also possible to see how many times we've 
+  # performed the action by passing `times` an index 
+  # variable. This starts from 0. in this example we're 
+  # storing the counter in a variable called `side`. 
+  # Because we're doing this 8 times, `side` will be set 
+  # first to 0, then 1, 2, 3, 4, 5, 6, 7.
   forward 5
   if side != 4:
     turn right
@@ -415,13 +420,14 @@ back 20
     turn left
 
 echo &quot;We drew a bow tie!&quot;
-echo &quot;This will only be printed once because it isn't in a times block&quot;
+echo &quot;This will only be printed once.&quot;
+echo &quot;Because it isn't in a times block.&quot;
 </code></pre>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="./basics/config.html"
+          <a rel="prev" href="./intro/config.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
@@ -440,7 +446,7 @@ echo &quot;This will only be printed once because it isn't in a times block&quot
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="./basics/config.html"
+      <a rel="prev" href="./intro/config.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>

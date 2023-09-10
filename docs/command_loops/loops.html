@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Shapes - Enu</title>
+  <title>Loops - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="../intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="../intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="../intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="../intro/multiplayer.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="../command_loops.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="../command_loops/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="../command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="../command_loops/loops.html" class="active" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/child_loops.html" tabindex="0">
+      <a href="../command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/more.html" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="../examples.html" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="../example/shapes.html" class="active" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="../command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="../goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -261,19 +257,133 @@
 
     <div id="content" class="content">
       <main>
-          <h1>Shapes</h1>
+          <h1>Loops</h1>
+<p>Command Loops can help manage the complexity of the logic for your units. They
+allow you to run complicated lists of commands and switch between them easily
+when situations change.</p>
+<p>You can create your <a href="commands.html">own commands</a>, or you can call any of the
+built-in Enu <a href="../coding/commands.html">commands</a> like <code>forward</code>, <code>back</code>, <code>turn</code>,
+<code>sleep</code>, etc.</p>
+<p>A Command Loop always has one and only one active command, which it will call
+repeatedly until you switch to some other command. The default command is
+<code>nil</code>. The first thing a loop must do is switch from <code>nil</code> to another command,
+using the little switch arrow <code>-&gt;</code>.</p>
+<pre><code class="language-nim">loop:
+  nil -&gt; forward
+  # I'll go forward forever!
+</code></pre>
+<p>The little switch arrow (<code>-&gt;</code>) will switch from the command on the left to the
+command on the right if it's encountered and the left command has just
+completed. If the loop goes through and no switches match, the command will be
+run again.</p>
+<p>We can control which switches get run by putting them in <code>if</code> statements.</p>
+<pre><code class="language-nim">loop:
+  nil -&gt; forward
+  if player.far:
+    forward -&gt; back
+  if player.near:
+    back -&gt; forward
+</code></pre>
+<p>In the above example, the loop immediately switches to <code>forward</code>, and will go
+forward indefinitely until one of the conditions is met and the command is
+switched to something else. If the player gets too far away (more than 100m) and
+the command is <code>forward</code>, the command will be switched to <code>back</code>. If the player
+is near (5m) and the command is <code>back</code>, it will switch to <code>forward</code>. However, if
+the player is near and the command is <code>forward</code>, nothing will change. The
+<code>if player.near</code> statement will be true, but <code>back -&gt; forward</code> is ignored, since
+the current command isn't <code>back</code>.</p>
+<p>If you want your loop to end at some point, you can switch back to <code>nil</code>:</p>
+<pre><code class="language-nim">loop:
+  # Some commands can take parameters.
+  nil -&gt; forward(10)
+  forward -&gt; nil
+  # I'll run `forward(10)` a single time, then stop and end
+  # the loop.
+</code></pre>
+<p>Let's look at something more complicated and introduce the big switch arrow
+(<code>==&gt;</code>) and switch blocks.</p>
+<pre><code class="language-nim">- wander:
+  speed = 1
+  forward 5..10
+  turn -45..45
+
+- charge:
+  speed = 5
+  turn player
+  forward 1
+
+- flee:
+  speed = 3
+  turn -player
+  forward 1
+
+- attack:
+  player.bounce 5
+  turn 360
+
+var health = 3
+
+loop:
+  nil -&gt; wander
+  if 1 in 50:
+    # When each `wander` command finishes there's a 1 in 50
+    # (2%) chance of our unit getting a sudden burst of
+    # energy and switching to the `charge` command.
+    # Otherwise we just keep wandering.
+    wander -&gt; charge
+
+  if health == 0:
+    # We died. Exit the loop. We want this to happen
+    # immediately, not after the command finishes, so we
+    # use the big switch arrow. We use the special `any`
+    # command to say that this should happen regardless of
+    # the running command.
+    any ==&gt; nil
+
+  if player.hit:
+    # If the player touches us while we're wandering, we
+    # flee. We want it to happen the instant the player
+    # touches us, not when our current `wander` is done, so
+    # we use the big switch arrow.
+
+    wander ==&gt; flee:
+      # This is a switch block. If the command switches
+      # here, the switch block will also run once.
+      health -= 1
+
+    # if the player touches us while we're charging, we
+    # attack immediately.
+    charge ==&gt; attack
+
+  if player.far:
+    # If the player is far and we're fleeing, go back to
+    # wandering
+    flee -&gt; wander
+
+  # Switch to wander when our attack is done. We always
+  # want this to happen, so it isn't in a conditional. It
+  # only does anything if the current command is `attack`,
+  # and we only do it when the attack is done becuase we're
+  # using the little switch arrow.
+  attack -&gt; wander
+</code></pre>
+<details class="note">
+<summary>Note for Nimions</summary>
+<p>Command Loops are state machines, and any proc can be a state. If the proc
+has a return value it will be discarded.</p>
+</details>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../examples.html"
+          <a rel="prev" href="../command_loops/arrows.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../goals.html"
+          <a rel="next" href="../command_loops/child_loops.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -285,13 +395,13 @@
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../examples.html"
+      <a rel="prev" href="../command_loops/arrows.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../goals.html"
+      <a rel="next" href="../command_loops/child_loops.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>

@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Child Loops - Enu</title>
+  <title>Multiplayer (Experimental) - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -111,16 +111,24 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
+      <a href="../intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="../intro/building.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Install or Build
+        <strong aria-hidden="true">1.2.</strong> Install or Build
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/controls.html" tabindex="0">
-        <strong aria-hidden="true">1.2.</strong> Controls and Usage
+      <a href="../intro/controls.html" tabindex="0">
+        <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../basics/config.html" tabindex="0">
-        <strong aria-hidden="true">1.3.</strong> Config
+      <a href="../intro/multiplayer.html" class="active" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+      </a></li>
+    <li class="chapter-item expanded ">
+      <a href="../intro/config.html" tabindex="0">
+        <strong aria-hidden="true">1.5.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -136,7 +144,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/commands.html" tabindex="0">
-        <strong aria-hidden="true">2.2.</strong> Commands
+        <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../coding/shorthand.html" tabindex="0">
@@ -149,56 +157,44 @@
       </ol>
       </li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops.html" tabindex="0">
-        <strong aria-hidden="true">3.</strong> Action Loops
+      <a href="../command_loops.html" tabindex="0">
+        <strong aria-hidden="true">3.</strong> Command Loops
       </a></li>
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../action_loops/actions.html" tabindex="0">
-        <strong aria-hidden="true">3.1.</strong> Actions
+      <a href="../command_loops/commands.html" tabindex="0">
+        <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/loops.html" tabindex="0">
-        <strong aria-hidden="true">3.2.</strong> Loops
+      <a href="../command_loops/arrows.html" tabindex="0">
+        <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/arrows.html" tabindex="0">
-        <strong aria-hidden="true">3.3.</strong> Arrows
+      <a href="../command_loops/loops.html" tabindex="0">
+        <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/child_loops.html" class="active" tabindex="0">
+      <a href="../command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../action_loops/more.html" tabindex="0">
-        <strong aria-hidden="true">3.5.</strong> More About Action Loops
-      </a></li>
-      </ol>
-      </li>
-    <li class="chapter-item expanded ">
-      <a href="../examples.html" tabindex="0">
-        <strong aria-hidden="true">4.</strong> Examples
-      </a></li>
-      <li>
-      <ol class="section">
-    <li class="chapter-item expanded ">
-      <a href="../example/shapes.html" tabindex="0">
-        <strong aria-hidden="true">4.1.</strong> Shapes
+      <a href="../command_loops/more.html" tabindex="0">
+        <strong aria-hidden="true">3.5.</strong> More About Command Loops
       </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
       <a href="../goals.html" tabindex="0">
-        <strong aria-hidden="true">5.</strong> Goals
+        <strong aria-hidden="true">4.</strong> Goals
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../demos.html" tabindex="0">
-        <strong aria-hidden="true">6.</strong> Demos
+        <strong aria-hidden="true">5.</strong> Demos
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../todo.html" tabindex="0">
-        <strong aria-hidden="true">7.</strong> TODO
+        <strong aria-hidden="true">6.</strong> TODO
       </a></li>
     </ol>
 <!-- I could use also an unescaped context value -->
@@ -261,75 +257,29 @@
 
     <div id="content" class="content">
       <main>
-          <h1>Child Loops</h1>
-<p>Actions are generally just a simple lists of commands. It's fine to put logic in them, but anything complicated
-will quickly get unwieldy. Imagine we have a unit that performs two complicated actions, <code>find_treasure</code> and
-<code>fight_monster</code>. <code>find_treasure</code> might need to <code>navigate</code> an area, <code>locate</code> items of interest, <code>interact</code> with them,
-then return to <code>home_base</code> to deposit them. <code>fight_monster</code> could require actions like <code>evade</code>, <code>attack</code>, <code>hide</code>, and
-<code>flee</code>.</p>
-<p>Combining all of this in a single action loop would give us a lot of actions, many of which are mostly unrelated,
-and managing our switches could get very complicated. However, making them entirely separate isn't ideal either, as
-there's probably some common functionality between them (die if our health gets too low, respawn if we get stuck). We
-also need to switch between the two actions.</p>
-<p>A good way to manage this is by making <code>find_treasure</code> and <code>fight_monster</code> child loops rather than regular actions.
-We can treat them like regular actions in our main <code>loop</code>, but when we switch to them they'll be able to perform
-more sophisticated logic than a normal action could. In addition, our main loop will continue to run along side
-the the child loop, so we can quickly switch out of the child loop with a big switch arrow <code>==&gt;</code> in response to
-certain conditions, without either loop needing to worry about higher level concerns.</p>
-<p>Our main loop could look something like this:</p>
-<pre><code class="language-nim">loop find_treasure:
-  # our treasure logic goes here. This loop doesn't have an exit condition.
-  if treasure_found:
-    # We found it. Start looking again. This will switch from any action apart
-    # from `look_for_chest`
-    others ==&gt; look_for_chest
-
-loop fight_monster:
-  # fight logic here. This loop should exit when the monster dies
-  if monster.dead:
-    any ==&gt; nil
-
-loop:
-  # We want our unit to find_treasure indefinately. `find_treasure` doesn't exit (switch to nil)
-  nil -&gt; find_treasure
-  if monster.near:
-    # find_treasure doesn't need to know anything about monsters. We can break out of it
-    # with a big switch arrow if we encounter one.
-    find_treasure ==&gt; fight_monster
-
-  # fight_monster does have an exit condition (the monster dies), so we can wait for it to finish
-  # using the little switch arrow, then go back to finding treasure.
-  fight_monster -&gt; find_treasure
-
-  if health == 0:
-    # if our health drops to 0, it doesn't matter what else we're doing. Die immediately. Break out
-    # of any action (except die) with a big switch arrow.
-    (any, -die) ==&gt; die
-
-    # this would also work:
-    # others ==&gt; die
-  if stuck:
-    # respawn if we're stuck, but only from our two child loops. We don't want to respawn if we're
-    # already respawning, or we're dead. Implementation of `respawn` not shown.
-    (find_treasure, fight_monster) ==&gt; respawn
-
-  # we're done respawning. Treasure time!
-  respawn -&gt; find_treasure
-</code></pre>
-<p>Child loops can also call other child loops, in which case both the parent and grandparent loops can use <code>==&gt;</code> to break
-out of the top level loop. There's no set limit to nesting depth.</p>
+          <h1>Multiplayer (Experimental)</h1>
+<p>It's possible to run Enu as a server by setting the <code>listen_address</code> to
+<code>0.0.0.0</code> in your <a href="config.html">config file</a>. Other players can then connect
+to your server by putting your IP or hostname in the <code>server_address</code> setting
+in their config. This still has bugs, and performance isn't great. It's also
+completely insecure (see below).</p>
+<h2>Warning!</h2>
+<p>Enu's multiplayer is insecure. A bad actor could delete or steal your data by
+connecting to your Enu server, or if you connect to theirs. This will be fixed,
+but for now it's important to only connect to Enu players you trust, or to use
+a device with no important data.</p>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../action_loops/arrows.html"
+          <a rel="prev" href="../intro/controls.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../action_loops/more.html"
+          <a rel="next" href="../intro/config.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -341,13 +291,13 @@ out of the top level loop. There's no set limit to nesting depth.</p>
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../action_loops/arrows.html"
+      <a rel="prev" href="../intro/controls.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../action_loops/more.html"
+      <a rel="next" href="../intro/config.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>
