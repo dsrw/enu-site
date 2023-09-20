@@ -271,8 +271,12 @@ require a higher number.</p>
 hidpi screens will require a higher number.</p>
 </li>
 <li>
+<p><code>world_prefix</code>: The base name that Enu will use when creating or loading
+a new level. Set to <code>tutorial</code> by default.</p>
+</li>
+<li>
 <p><code>world</code>: The world/project to load. Change this to create a new world. By
-default, this will be the <code>base_name</code> plus <code>-</code> and a number. Set to
+default, this will be the <code>world_prefix</code> plus <code>-</code> and a number. Set to
 <code>tutorial-1</code> by default.</p>
 </li>
 <li>
@@ -294,10 +298,6 @@ by default.</p>
 <p><code>semicolon_as_colon</code>: Both <code>;</code> and <code>:</code> will be interpreted as <code>:</code>, allowing
 <code>:</code> to be typed without shift. Sometimes useful for new typists. <code>false</code> by
 default.</p>
-</li>
-<li>
-<p><code>world_prefix</code>: The base name that Enu will use when creating or loading
-a new level. Set to <code>tutorial</code> by default.</p>
 </li>
 <li>
 <p><code>listen_address</code>: Set this to something reasonable, like <code>0.0.0.0</code>, to be a
@@ -349,13 +349,13 @@ by default.</p>
 <pre><code class="language-json">{
   &quot;font_size&quot;: 38,
   &quot;dock_icon_size&quot;: 193.75,
+  &quot;world_prefix&quot;: &quot;tutorial&quot;,
   &quot;world&quot;: &quot;tutorial-1&quot;,
   &quot;show_stats&quot;: true,
   &quot;god_mode&quot;: false,
   &quot;mega_pixels&quot;: 5.0,
   &quot;start_full_screen&quot;: false,
   &quot;semicolon_as_colon&quot;: false,
-  &quot;world_prefix&quot;: &quot;tutorial&quot;,
   &quot;listen_address&quot;: &quot;&quot;,
   &quot;server_address&quot;: &quot;&quot;,
   &quot;player_color&quot;: &quot;#6495ED&quot;,
