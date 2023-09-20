@@ -276,22 +276,24 @@ default, this will be the <code>base_name</code> plus <code>-</code> and a numbe
 <code>tutorial-1</code> by default.</p>
 </li>
 <li>
-<p><code>show_stats</code>: Show FPS and other stats.</p>
+<p><code>show_stats</code>: Show FPS and other stats. <code>false</code> by default.</p>
 </li>
 <li>
 <p><code>god_mode</code>: Makes hidden units slightly visible, and allows editing locked
-units.</p>
+units. <code>false</code> by default.</p>
 </li>
 <li>
 <p><code>mega_pixels</code>: The render resolution, in mega pixels. Increase for more
-detail. Decrease for better performance.</p>
+detail. Decrease for better performance. <code>2.0</code> by default.</p>
 </li>
 <li>
-<p><code>start_full_screen</code>: Whether to start Enu full screen, or in a window.</p>
+<p><code>start_full_screen</code>: Whether to start Enu full screen, or in a window. <code>true</code>
+by default.</p>
 </li>
 <li>
 <p><code>semicolon_as_colon</code>: Both <code>;</code> and <code>:</code> will be interpreted as <code>:</code>, allowing
-<code>:</code> to be typed without shift. Sometimes useful for new typists.</p>
+<code>:</code> to be typed without shift. Sometimes useful for new typists. <code>false</code> by
+default.</p>
 </li>
 <li>
 <p><code>world_prefix</code>: The base name that Enu will use when creating or loading
@@ -299,22 +301,48 @@ a new level. Set to <code>tutorial</code> by default.</p>
 </li>
 <li>
 <p><code>listen_address</code>: Set this to something reasonable, like <code>0.0.0.0</code>, to be a
-server. Optionally you can add a <code>:</code> and a port number. Defaults to port 9632.</p>
+server. Optionally you can add a <code>:</code> and a port number. Empty by default. Will
+use port <code>9632</code> if none is specified.</p>
 </li>
 <li>
 <p><code>server_address</code>: Set this to an IP or host name to connect to a server.
-Optionally you can add a <code>:</code> and a port number. Defaults to port 9632.</p>
+Optionally you can add a <code>:</code> and a port number. Empty by default. Will use
+port <code>9632</code> if none is specified.</p>
 </li>
 <li>
 <p><code>player_color</code>: The color of your avatar when in multiplayer. Set to a hex
 color (like <code>#ffffff</code>) or one of Enu's built in colors (<code>blue</code>, <code>red</code>,
-<code>green</code>, <code>black</code>, <code>white</code>, and <code>brown</code>). Defaults to a random color.</p>
+<code>green</code>, <code>black</code>, <code>white</code>, and <code>brown</code>). Defaults to a random hex color.</p>
 </li>
 <li>
 <p><code>channel_size</code>: A debug option to configure the size of the channel between
-the worker and the view. 5000 by default. Increasing this may improve
+the worker and the view. <code>5000</code> by default. Increasing this may improve
 performance at the cost of latency and memory usage. This option will probably
 go away in the future.</p>
+</li>
+<li>
+<p><code>walk_speed</code>: Normal ground movement speed. <code>500</code> by default.</p>
+</li>
+<li>
+<p><code>fly_speed</code>: Normal flying speed. <code>1500</code> by default</p>
+</li>
+<li>
+<p><code>alt_walk_speed</code>: Ground movement speed while <code>Shift</code>/<code>L3</code> is held or toggled.
+<code>1000</code> by default.</p>
+</li>
+<li>
+<p><code>alt_fly_speed</code>: Flying speed while <code>Shift</code>/<code>L3</code> is held or toggled. <code>250</code> by
+default.</p>
+</li>
+<li>
+<p><code>mouse_sensitivity</code>: Aim/look sensitivity while the mouse is captured. <code>5.0</code>
+by default.</p>
+</li>
+<li>
+<p><code>gamepad_sensitivity</code>: Gamepad aim/look sensitivity. <code>2.5</code> by default.</p>
+</li>
+<li>
+<p><code>invert_gamepad_y_axis</code>: You know who you are. <code>false</code> by default.</p>
 </li>
 </ul>
 <h2>Example</h2>
@@ -331,7 +359,14 @@ go away in the future.</p>
   &quot;listen_address&quot;: &quot;&quot;,
   &quot;server_address&quot;: &quot;&quot;,
   &quot;player_color&quot;: &quot;#6495ED&quot;,
-  &quot;channel_size&quot;: 5000
+  &quot;channel_size&quot;: 5000,
+  &quot;walk_speed&quot;: 500,
+  &quot;fly_speed&quot;: 1500,
+  &quot;alt_walk_speed&quot;: 1000,
+  &quot;alt_fly_speed&quot;: 250,
+  &quot;mouse_sensitivity&quot;: 5.0,
+  &quot;gamepad_sensitivity&quot;: 2.5,
+  &quot;invert_gamepad_y_axis&quot;: false
 }
 </code></pre>
       </main>
