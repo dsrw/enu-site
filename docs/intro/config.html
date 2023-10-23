@@ -305,20 +305,14 @@ server. Optionally you can add a <code>:</code> and a port number. Empty by defa
 use port <code>9632</code> if none is specified.</p>
 </li>
 <li>
-<p><code>server_address</code>: Set this to an IP or host name to connect to a server.
-Optionally you can add a <code>:</code> and a port number. Empty by default. Will use
+<p><code>connect_address</code>: An IP or host name of an Enu instance with <code>listen_address</code>
+set. Optionally include a <code>:</code> and a port number. Empty by default. Will use
 port <code>9632</code> if none is specified.</p>
 </li>
 <li>
 <p><code>player_color</code>: The color of your avatar when in multiplayer. Set to a hex
 color (like <code>#ffffff</code>) or one of Enu's built in colors (<code>blue</code>, <code>red</code>,
 <code>green</code>, <code>black</code>, <code>white</code>, and <code>brown</code>). Defaults to a random hex color.</p>
-</li>
-<li>
-<p><code>channel_size</code>: A debug option to configure the size of the channel between
-the worker and the view. <code>5000</code> by default. Increasing this may improve
-performance at the cost of latency and memory usage. This option will probably
-go away in the future.</p>
 </li>
 <li>
 <p><code>walk_speed</code>: Normal ground movement speed. <code>500</code> by default.</p>
@@ -357,9 +351,8 @@ by default.</p>
   &quot;start_full_screen&quot;: false,
   &quot;semicolon_as_colon&quot;: false,
   &quot;listen_address&quot;: &quot;&quot;,
-  &quot;server_address&quot;: &quot;&quot;,
+  &quot;connect_address&quot;: &quot;&quot;,
   &quot;player_color&quot;: &quot;#6495ED&quot;,
-  &quot;channel_size&quot;: 5000,
   &quot;walk_speed&quot;: 500,
   &quot;fly_speed&quot;: 1500,
   &quot;alt_walk_speed&quot;: 1000,
