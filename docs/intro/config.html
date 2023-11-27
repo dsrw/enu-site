@@ -111,8 +111,8 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../intro/examples.html" tabindex="0">
-        <strong aria-hidden="true">1.1.</strong> Examples
+      <a href="../intro/tutorial.html" tabindex="0">
+        <strong aria-hidden="true">1.1.</strong> Tutorial
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/building.html" tabindex="0">
@@ -123,12 +123,16 @@
         <strong aria-hidden="true">1.3.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
+      <a href="../intro/examples.html" tabindex="0">
+        <strong aria-hidden="true">1.4.</strong> Examples
+      </a></li>
+    <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.4.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.5.</strong> Multiplayer (Experimental)
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" class="active" tabindex="0">
-        <strong aria-hidden="true">1.5.</strong> Config
+        <strong aria-hidden="true">1.6.</strong> Config
       </a></li>
       </ol>
       </li>
@@ -271,12 +275,12 @@ require a higher number.</p>
 hidpi screens will require a higher number.</p>
 </li>
 <li>
-<p><code>world_prefix</code>: The base name that Enu will use when creating or loading
-a new level. Set to <code>tutorial</code> by default.</p>
+<p><code>world</code>: An Enu world is a collection of levels. Set to <code>tutorial</code> by default.
+If the world doesn't exist, it will be created.</p>
 </li>
 <li>
-<p><code>world</code>: The world/project to load. Change this to create a new world. By
-default, this will be the <code>world_prefix</code> plus <code>-</code> and a number. Set to
+<p><code>level</code>: The level to load. Change this to create a new level, or load an
+existing one. By default, this will be <code>world</code> plus <code>-</code> and a number. Set to
 <code>tutorial-1</code> by default.</p>
 </li>
 <li>
@@ -343,8 +347,8 @@ by default.</p>
 <pre><code class="language-json">{
   &quot;font_size&quot;: 38,
   &quot;dock_icon_size&quot;: 193.75,
-  &quot;world_prefix&quot;: &quot;tutorial&quot;,
-  &quot;world&quot;: &quot;tutorial-1&quot;,
+  &quot;world&quot;: &quot;tutorial&quot;,
+  &quot;level&quot;: &quot;tutorial-1&quot;,
   &quot;show_stats&quot;: true,
   &quot;god_mode&quot;: false,
   &quot;mega_pixels&quot;: 5.0,

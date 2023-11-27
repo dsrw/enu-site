@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Child Loops - Enu</title>
+  <title>Tutorial - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -111,7 +111,7 @@
       <li>
       <ol class="section">
     <li class="chapter-item expanded ">
-      <a href="../intro/tutorial.html" tabindex="0">
+      <a href="../intro/tutorial.html" class="active" tabindex="0">
         <strong aria-hidden="true">1.1.</strong> Tutorial
       </a></li>
     <li class="chapter-item expanded ">
@@ -179,7 +179,7 @@
         <strong aria-hidden="true">3.3.</strong> Loops
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../command_loops/child_loops.html" class="active" tabindex="0">
+      <a href="../command_loops/child_loops.html" tabindex="0">
         <strong aria-hidden="true">3.4.</strong> Child Loops
       </a></li>
     <li class="chapter-item expanded ">
@@ -261,90 +261,89 @@
 
     <div id="content" class="content">
       <main>
-          <h1>Child Loops</h1>
-<p>Sometimes you want to write a command with its own Command Loop. Imagine we have
-a unit that performs two complicated commands, <code>find_treasure</code> and
-<code>fight_monster</code>. <code>find_treasure</code> might need to <code>navigate</code> an area, <code>locate</code>
-items of interest, <code>interact</code> with them,then return to <code>home_base</code> to deposit
-them. <code>fight_monster</code> could require commands like <code>evade</code>, <code>attack</code>, <code>hide</code>, and
-<code>flee</code>.</p>
-<p>Combining all of this in a single command loop would give us a lot of commands,
-many of which are mostly unrelated, and managing our switches could get very
-complicated. However, making them entirely separate isn't ideal either, as
-there's probably some common functionality between them (die if our health gets
-too low, respawn if we get stuck). We also need to switch between the two
-commands.</p>
-<p>A good way to manage this is by making <code>find_treasure</code> and <code>fight_monster</code> child
-loops rather than regular commands. We can treat them like regular commands in
-our main <code>loop</code>, but when we switch to them they'll be able to perform more
-sophisticated logic than a normal command could. In addition, our main loop will
-continue to run along side the the child loop, so we can quickly switch out of
-the child loop with a big switch arrow <code>==&gt;</code> in response to certain conditions,
-without either loop needing to worry about higher level concerns.</p>
-<p>Our main loop could look something like this:</p>
-<pre><code class="language-nim">loop find_treasure:
-  # Our treasure logic goes here. This loop doesn't have
-  # an exit condition.
-  if treasure_found:
-    # We found it. Start looking again. This will switch
-    # from any command apart from `look_for_chest`.
-    others ==&gt; look_for_chest
+          <h1>Tutorial</h1>
+<p>When you laungh Enu for the first time, it will bring you through a simple
+tutorial.</p>
+<p><img src="../assets/tutorial_1_screenshot_1.webp" alt="Tutorial Intro Screenshot" /></p>
+<h2>Moving</h2>
+<p>Move with the <code>W</code>, <code>A</code>, <code>S</code>, and <code>D</code> keys, or with the left stick of your game
+controller. Look around with the mouse, trackpad, or right stick of your game
+controller.</p>
+<p>Close help or code windows with <code>ESC</code> on your keyboard or <code>B</code> on your
+controller. You can also move without closing the window by using your
+controller, or by holding down <code>alt/option (⌥)</code> on your keyboard.</p>
+<h2>Jumping and Flying</h2>
+<p><img src="../assets/tutorial_1_screenshot_2.webp" alt="Jumping and Flying Screenshot" /></p>
+<p>Jump with the <code>space</code> bar, or the <code>A</code> button on your game controller.</p>
+<p>Fly by jumping twice quickly. Fly upwards by holding the jump button, and
+downwards by holding crouch (<code>C</code> on the keyboard or <code>B</code> on a game controller).
+Return to the ground by pressing the <code>jump</code> button twice.</p>
+<p>Flying is a great way to see things from a better angle and to zip around your
+world at high speed. It also lets you move through objects and blocks, so if you
+ever get yourself stuck you can probably fly your way out.</p>
+<h2>Changing tools</h2>
+<p>Tools are selected from the <code>Tool Bar</code> on the bottom of the screen.</p>
+<p>Change tools with the keyboard keys <code>1</code> - <code>8</code>, the <code>L1</code> and <code>R1</code> controller
+buttons, or by releasing the mouse with <code>ESC</code> and selecting a tool with the
+mouse pointer.</p>
+<p>Enu currently has 8 tools. Tool <code>1</code> on the left is the <code>Code</code> tool. It can
+program almost anything in Enu, and will be explained in more detail later.
+Tool <code>8</code> on the right is the <code>Place Bot</code> tool. Use it to fill your world with
+friendly robots. Tools <code>2</code> - <code>7</code> are the <code>blue</code>, <code>red</code>, <code>green</code>, <code>black</code>,
+<code>white</code>, and <code>brown</code> colored blocks.</p>
+<h2>Bots</h2>
+<p><code>Bots</code> are NPCs in Enu, and can be programmed to explore, change their
+appearance, or offer information.</p>
+<p>They can be placed with the <code>left</code> mouse button or the <code>R1</code> gamepad trigger.</p>
+<h2>Coding Enu</h2>
+<p><img src="../assets/tutorial_1_screenshot_3.webp" alt="Coding Screenshot" /></p>
+<p>We control Enu using <a href="https://nim-lang.org">Nim</a>, a powerful programming
+language that's useful for a wide variety of tasks. Almost everything in Enu
+can be coded with Nim.</p>
+<p>With the <code>Code</code> tool selected, you can code anything you've created by clicking
+on it with the <code>left</code> mouse button, or <code>R1</code> on the controller</p>
+<h2>Coding Bots</h2>
+<p>We control bots with simple commands like <code>forward</code> and <code>turn</code>. Here's some
+example code to get a <code>Bot</code> through the course in Enu's tutorial:</p>
+<pre><code class="language-nim">forward 17
+turn right
 
-loop fight_monster:
-  # Fight logic here. This loop should exit when the
-  # monster dies.
-  if monster.dead:
-    any ==&gt; nil
+forward 10
+turn left
 
-loop:
-  # We want our unit to find_treasure indefinately.
-  # `find_treasure` doesn't exit (switch to nil).
-  nil -&gt; find_treasure
-  if monster.near:
-    # find_treasure doesn't need to know anything about
-    # monsters. We can break out of it with a big switch
-    # arrow if we encounter one.
-    find_treasure ==&gt; fight_monster
+forward 36
+turn left
 
-  # fight_monster does have an exit condition (the monster
-  # dies), so we can wait for it to finish using the little
-  # switch arrow, then go back to finding treasure.
-  fight_monster -&gt; find_treasure
-
-  if health == 0:
-    # if our health drops to 0, it doesn't matter what else
-    # we're doing. Die immediately. Break out of any
-    # command (except die) with a big switch arrow.
-    (any, -die) ==&gt; die
-
-    # this would also work:
-    # others ==&gt; die
-
-  if stuck:
-    # respawn if we're stuck, but only from our two child
-    # loops. We don't want to respawn if we're already
-    # respawning, or we're dead. Implementation of
-    # `respawn` not shown.
-    (find_treasure, fight_monster) ==&gt; respawn
-
-  # we're done respawning. Treasure time!
-  respawn -&gt; find_treasure
+forward 20
 </code></pre>
-<p>Child loops can also call other child loops, in which case both the parent and
-grandparent loops can use <code>==&gt;</code> to break out of the top level loop. There's no
-limit to nesting depth.</p>
+<p>Run your code by pressing <code>alt/option (⌥)</code>. Keep <code>alt/option (⌥)</code> held down to
+move around while you're coding. Flying is a great way to get yourself into
+position so you can better see what's happening, so try double jumping to get a
+better view.</p>
+<p>If your <code>Bot</code> is moving too slowly for your tastes, make her run by setting the
+<code>speed</code> value.</p>
+<pre><code class="language-nim">speed = 10
+
+forward 17
+turn right
+
+# ...
+</code></pre>
+<h2>Next Steps</h2>
+<p><a href="../intro/controls.html">Full controls</a> for Enu can be found elsewhere in the
+docs, along with a quick overview of using Nim to <a href="../coding.html">code Enu</a>.</p>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../command_loops/loops.html"
+          <a rel="prev" href="../intro.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../command_loops/more.html"
+          <a rel="next" href="../intro/building.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -356,13 +355,13 @@ limit to nesting depth.</p>
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../command_loops/loops.html"
+      <a rel="prev" href="../intro.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../command_loops/more.html"
+      <a rel="next" href="../intro/building.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>
