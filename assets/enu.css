@@ -1,15 +1,16 @@
 body {
-  background-color: #0b0517;
+  background-color: #000;
   margin: 0;
-  font-size: 36pt;
+  font-size: 24pt;
   color: #fff;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .links {
-  padding: 48pt 10pt 24pt 10pt;
+  padding: 48pt 10pt;
   border-bottom: #FF73FD 1pt solid;
+  background: #0b0517;
 }
 
 .links a {
@@ -25,7 +26,7 @@ body {
 }
 
 .hero {
-  border-bottom: 1pt #FF73FD solid;
+  display: grid;
 }
 
 .hero-image {
@@ -40,19 +41,15 @@ body {
 
 .info2 {
   padding: 24pt 10%;
-  border: #FF73FD solid;
-  border-width: 1pt 0pt 0pt;
+
   font-size: 24pt;
   background-color: #000;
 }
 
-.info2 a {
-  color: #FF73FD;
-}
 
 .videos {
-  border: #FF73FD solid;
-  border-width: 1pt 0pt;
+  display: grid;
+  border-bottom: #FF73FD solid 1px;
 }
 
 .videos video {
