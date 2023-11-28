@@ -33,19 +33,14 @@ body {
   width: 100%;
 }
 
-
 .info {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 24pt 10%;
 }
 
-.info2 {
-  padding: 24pt 10%;
-
-  font-size: 24pt;
-  background-color: #000;
+.info a {
+  color: #FF73FD;
 }
-
 
 .videos {
   display: grid;
