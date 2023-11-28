@@ -29,7 +29,6 @@ body {
 }
 
 .hero-image {
-  display: grid;
   width: 100%;
 }
 
@@ -52,7 +51,6 @@ body {
 }
 
 .videos {
-  display: grid;
   border: #FF73FD solid;
   border-width: 1pt 0pt;
 }
@@ -67,10 +65,3 @@ body {
   border-width: 1pt 0pt 0pt;
   font-size: 12pt;
 }
-
-
-
-/*.div2 { grid-area: 2 / 1 / 3 / 2; }*/
-/*.div3 { grid-area: 2 / 2 / 3 / 3; }*/
-/*.div4 { grid-area: 2 / 3 / 3 / 4; }*/
-/*.footer { grid-area: 3 / 1 / 4 / 4; }*/
