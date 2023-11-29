@@ -10,10 +10,11 @@
 <body>
   
   <div class="hero">
-    <img class="hero-image" 
-      srcset="assets/hero_mobile.webp 1512w, assets/hero.webp 2874w"
-      sizes="(max-width: 800px) 480px, 800px"
-      alt="Enu hero image" />
+    <picture class="hero-image">
+      <source media="(max-width: 799px)" srcset="assets/hero_mobile.webp" />
+      <source media="(min-width: 800px)" srcset="assets/hero.webp" />
+      <img src="assets/hero.webp" alt="Enu hero image" class="hero-image"/>
+    </picture>
   </div>
 
   <div class="links">
@@ -27,7 +28,7 @@
   
   <div class="videos">
     <video autoplay muted loop playsinline preload>
-      <source src="assets/enu1.mp4" type="video/mp4" />
+      <source src="assets/enu1-1080.mp4" type="video/mp4" />
     </video>  
   </div>
 
@@ -37,7 +38,7 @@
 
   <div class="videos">
     <video autoplay muted loop playsinline preload>
-      <source src="assets/enu2.mp4" type="video/mp4" />
+      <source src="assets/enu2-1080.mp4" type="video/mp4" />
     </video>  
   </div>
 
@@ -47,7 +48,7 @@
 
   <div class="videos">
     <video autoplay muted loop playsinline preload>
-      <source src="assets/enu3.mp4" type="video/mp4" />
+      <source src="assets/enu3-1080.mp4" type="video/mp4" />
     </video>  
   </div>
 

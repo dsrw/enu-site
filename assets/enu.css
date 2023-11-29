@@ -26,7 +26,7 @@ body {
 }
 
 .hero {
-  display: grid;
+  display: flex;
 }
 
 .hero-image {
@@ -43,7 +43,7 @@ body {
 }
 
 .videos {
-  display: grid;
+  display: flex;
   border-bottom: #FF73FD solid 1px;
 }
 
