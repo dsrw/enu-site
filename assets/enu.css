@@ -25,7 +25,7 @@ body {
   color: #fff;
 }
 
-.hero {
+.hero .hero-image {
   display: flex;
 }
 
